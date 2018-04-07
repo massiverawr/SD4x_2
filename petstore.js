@@ -25,23 +25,54 @@ function calculateFoodOrder(numAnimals, avgFood) {
     var first = new Weekday ('Monday', 100);
     var second = new Weekday ('Tuesday', 140);
     var third = new Weekday ('Wednesday', 200);
-    var fourth = new Weekday ('Thursday', 300);
+    var fourth = new Weekday ('Thursday', 700);
     var fifth = new Weekday ('Friday', 400);
-    var sixth = new Weekday ('Saturday', 700);
+    var sixth = new Weekday ('Saturday', 200);
     var seventh = new Weekday ('Sunday', 50);
 
 function mostPopularDays(week) {
     // IMPLEMENT THIS FUNCTION!
-    var dayInfo = week;
+    // Check if the array provided is null or empty and return null
     var i;
     var temp = 0;
 
-    for (i = 0; i < week.length; i++) {
-        if (temp < week[i].traffic) {
-            temp = week[i].traffic;
+    if (week == null || week.length == 0) {
+        return null;
+    }
+    else {
+        for (i = 0; i < week.length; i++) {
+            if (temp < week[i].traffic) {
+                temp = week[i].traffic;
+            }
+        }
+        //return temp;
+        //console.log(temp)
+    
+        // array that will contain the indexes where highest number is found
+        var arr = [];
+        
+        // stepping through the week array to find where the highest number occurs 
+        // and pushing the indexes to array arr
+        for (i = 0; i < week.length; i++) {
+            if (temp == week[i].traffic) {
+                arr.push(week[i].name);
+            }
+        }
+        //console.log(arr);
+        var topDays = [];
+
+        if (arr.length >= 2) {
+            //for (i = 0; i < arr.length; i++) {
+            //    topDays.push(arr[i]);
+            return arr;
+            //console.log(topDays)
+        }
+        else {
+            return arr[0];
+            //return weekDay[arr[0]];
+            //console.log(arr[0])
         }
     }
-    console.log(temp)
 }
 
 
